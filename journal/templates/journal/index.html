@@ -1,0 +1,57 @@
+{% load demo_filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="menu">
+                <a href="#" class="menu__item">Home</a>
+                <a href="#" class="menu__item">Aidar</a>
+                <a href="#" class="menu__item">About</a>
+            </nav>
+        </div>
+    </header>
+    <article>
+        <div>{{ aidar|capfirst }}</div>
+        <div>{{ tilek|capfirst }}</div>
+        <div>{{ country.Kyrgyzstan }}</div>
+        <div>{{ house.get_stories }}</div>
+        <div>{{ house.name }}</div>
+        <div>{{ text|remove_letter:"S"|remove_letter:"ү"|remove_letter:"t" }}</div>
+        <div>My favorite car:  {{ my_cars.1 }}</div>
+        {% if null_value %}
+            <ol>
+            {% for c in my_cars %}
+                <li>{{ c }}</li>
+            {% endfor %}
+            </ol>
+        {% endif %}
+        <ul>
+            <li>{{ my_cars.0 }}</li>
+            <li>{{ my_cars.1 }}</li>
+            <li>{{ my_cars.2 }}</li>
+        </ul>
+        <div>
+            <div>{{ one_car.name }} {{ one_car.department }}</div>
+            <div>
+                <strong>Record: {{ record_from_db|default_if_none:"Sorry, no records found" }} </strong>
+            </div>
+            <strong>{{ days|add:"12" }} cars</strong>
+            <strong>{{ today|date:"D y.m.d H:m:s" }} </strong>
+        </div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </article>
+
+</body>
+</html>
